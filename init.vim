@@ -1,4 +1,4 @@
-" Map escape to jj
+ "Map escape to jj
 imap jj <Esc>
 
 " Syntax highlighting
@@ -74,6 +74,9 @@ Plug 'ambv/black'
 " Gruvbox color theme
 Plug 'morhetz/gruvbox'
 
+Plug 'kdheepak/lazygit.nvim'
+
+
 " Vim-monokai-tasty color theme
 Plug 'patstockwell/vim-monokai-tasty'
 
@@ -94,8 +97,8 @@ nmap <leader><leader>u :UndotreeToggle<cr>
 nmap <leader><leader>f :Files<cr>
 nmap <leader><leader><leader>g :GoMetaLinter<cr>
 nnoremap <C-p> :GFiles<CR>
-nnoremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
-vnoremap <leader><leader>c :call NERDComment(0,"toggle")<CR>
+nnoremap <leader><leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
+vnoremap <leader><leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
 nnoremap <leader><Tab> :bnext<CR>
 nnoremap <leader><Tab><Tab> :bprevious<CR>
 
@@ -303,3 +306,14 @@ nmap <leader>gs :G<CR>
 nmap <leader>gl :G log<CR>
 nmap <leader>gl :diffget //2<CR>
 nmap <leader>gr :diffget //3<CR>
+
+" Search whole project
+nnoremap \ :Rg<space>
+
+" NERDTree to open dir of current file
+map <C-d> :NERDTree %<CR>
+
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+
+" setup mapping to call :LazyGit
+nnoremap <silent> <leader>lg :LazyGit<CR>
