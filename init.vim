@@ -44,10 +44,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 
 " Formatter
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+"Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " Comment and uncomment lines
 Plug 'preservim/nerdcommenter'
+
+Plug 'SirVer/ultisnips'
+Plug 'mlaursen/vim-react-snippets'
 
 " A light and configurable statusline/tabline plugin for Vim
 Plug 'itchyny/lightline.vim'
@@ -99,6 +102,7 @@ nmap <leader><leader><leader>g :GoMetaLinter<cr>
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader><leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
 vnoremap <leader><leader>c :call nerdcommenter#Comment(0,"toggle")<CR>
+" Ir a buffer siguiente y anterior
 nnoremap <leader><Tab> :bnext<CR>
 nnoremap <leader><Tab><Tab> :bprevious<CR>
 
@@ -204,10 +208,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -287,9 +287,7 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 """"""""""""""""""""""""coc nvim settings end""""""""""""""""""""""""
 
 " Set the prettier CLI executable path
-let g:prettier#exec_cmd_path = "~/.vim/plugged/vim-prettier/node_modules/prettier"
-" Max line length that prettier will wrap on: a number or 'auto'
-let g:prettier#config#print_width = 100 " default is 'auto'
+"let g:prettier#exec_cmd_path = "~/.vim/plugged/vim-prettier/node_modules/prettier"
 
 " Colorscheme (For gruvbox $TERM env var needs to be xterm-256color)
 autocmd vimenter * ++nested colorscheme gruvbox
@@ -313,7 +311,13 @@ nnoremap \ :Rg<space>
 " NERDTree to open dir of current file
 map <C-d> :NERDTree %<CR>
 
+"Prettier
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
 " setup mapping to call :LazyGit
 nnoremap <silent> <leader>lg :LazyGit<CR>
+"
+" Select all
+nnoremap <leader>a ggVG
