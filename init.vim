@@ -321,3 +321,4 @@ nnoremap <silent> <leader>lg :LazyGit<CR>
 "
 " Select all
 nnoremap <leader>a ggVG
+source ~/.cocrc
