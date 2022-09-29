@@ -43,6 +43,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Vim 
 Plug 'tpope/vim-fugitive'
 
+" Terraform
+Plug 'hashivim/vim-terraform'
+
 " Formatter
 "Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
